@@ -2,9 +2,11 @@
 
 Ein Jump'n'Run im Abendwald zum Üben von Bruchrechnung (Malnehmen und Teilen), gedacht für Kinder ab etwa 11 Jahren.
 
-Wolf Wilko läuft durch den Wald, löst Bruch-Rätsel, sammelt Superkräfte und besiegt am Ende jedes Levels einen Endgegner.
+Wolf Wilko läuft durch den Wald, löst Bruch-Rätsel, sammelt Superkräfte und besiegt am Ende jedes Levels einen Endgegner. Jedes Level hat einen anderen Endgegner mit eigenen Angriffen.
 
 - 10 Level mit steigender Schwierigkeit, frei wählbar
+- 10 verschiedene Endgegner, von König Morchel bis Knorrbart dem Baumriesen
+- Superkräfte für gelöste Rätsel, die man beim Sterben wieder verliert
 - Rätsel-Steine, Antwort-Blöcke und Schatztruhen mit Bruchaufgaben
 - Kettenaufgaben ab Level 4, mit Tipps und Lösungsweg
 - Waldmusik und Wolfsgeheul, direkt im Browser erzeugt
