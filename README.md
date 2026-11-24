@@ -15,8 +15,14 @@ Wolf Wilko läuft durch den Wald, löst Bruch-Rätsel, sammelt Superkräfte und 
 
 Online: https://jwnq.github.io/bruchlernwolf/
 
-Lokal: `index.html` herunterladen und im Browser öffnen. Es wird nichts installiert. Ohne Internet fehlt nur die Schriftart, das Spiel läuft trotzdem.
+Lokal: Repository herunterladen (Knopf „Code“ → „Download ZIP“), entpacken und `index.html` im Browser öffnen. Es wird nichts installiert, und eine Internetverbindung ist nicht nötig.
 
 Steuerung: Pfeiltasten zum Laufen, Leertaste oder Pfeil nach oben zum Springen, X zum Heulen. Auf dem Tablet gibt es Knöpfe im Bild für Laufen, Springen und Heulen.
 
-Das Spiel speichert nur Level-Bestwerte und die Ton-Einstellung im Browser des Geräts und sendet keine Spieldaten. Nur die Schriftart wird von Google Fonts geladen.
+## Datenschutz
+
+Das Spiel lädt nichts von fremden Servern, setzt keine Cookies und nutzt kein Tracking. Es speichert nur Level-Bestwerte und die Ton-Einstellung im Browser des Geräts. GitHub speichert als Anbieter von GitHub Pages beim Aufruf die IP-Adresse. Mehr dazu im [Datenschutzhinweis](https://jwnq.github.io/bruchlernwolf/datenschutz.html).
+
+## Schriftarten
+
+Lilita One (Juan Montoreano) und Nunito (The Nunito Project Authors), beide unter der SIL Open Font License 1.1. Die Schriftdateien liegen unverändert im Ordner `fonts/`, zusammen mit den Lizenztexten.

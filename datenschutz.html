@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Datenschutzhinweis · Bruch-Abenteuer</title>
+<meta name="description" content="Datenschutzhinweis zum Lernspiel Bruch-Abenteuer.">
+<style>
+@font-face{font-family:"Lilita One";src:url("fonts/LilitaOne-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Nunito";src:url("fonts/Nunito-wght.ttf") format("truetype");font-weight:200 1000;font-display:swap}
+/* Layout: eine helle Steintafel auf dunklem Waldgrund, wie die Tafeln im Spiel */
+:root{
+  --night:#0d1d18; --foam:#eef5ea; --mist:#b5c9bd; --ink:#1b2a22; --muted:#5b6f63;
+  --amber:#ffc83d; --rune-ink:#0b7d6b; --tablet:#eef3ec; --edge:#c2d0c0;
+  --display:"Lilita One","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --body:"Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--night);color:var(--foam);font:600 1rem/1.55 var(--body);
+  padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(32px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.brand{font-family:var(--display);color:var(--amber);font-size:1.4rem;text-decoration:none}
+.tablet{background:var(--tablet);color:var(--ink);border:4px solid var(--edge);border-radius:22px;box-shadow:0 6px 0 #9db19c;padding:24px clamp(18px,4vw,32px);display:flex;flex-direction:column;gap:14px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5vw,2.1rem);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:1.2rem;margin:10px 0 0}
+p,ul{margin:0;max-width:65ch}
+ul{padding-left:1.2em}
+li+li{margin-top:4px}
+a{color:var(--rune-ink);font-weight:800}
+a:focus-visible{outline:3px solid var(--rune-ink);outline-offset:2px;border-radius:4px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9em;background:#fff;border:1px solid var(--edge);border-radius:6px;padding:0 5px}
+.meta{color:var(--muted);font-size:.9rem}
+.back{color:var(--mist);font-weight:800}
+.back a{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="./">Bruch-Abenteuer</a>
+  <main class="tablet">
+    <h1>Datenschutzhinweis</h1>
+    <p>Bruch-Abenteuer ist ein privates, nicht kommerzielles Lernspiel zur Bruchrechnung. Es gibt keine Werbung, keine Anmeldung und keine Stelle, an der persönliche Daten eingegeben werden.</p>
+
+    <h2>Bereitstellung über GitHub Pages</h2>
+    <p>Diese Seite wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc. in den USA. Nach Angaben von GitHub wird beim Aufruf einer GitHub-Pages-Seite die IP-Adresse der Besucher aus Sicherheitsgründen gespeichert, auch ohne GitHub-Konto. Darauf hat der Betreiber dieser Seite keinen Einfluss. Einzelheiten stehen in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a> und in der <a href="https://docs.github.com/de/pages/getting-started-with-github-pages/what-is-github-pages">Beschreibung von GitHub Pages</a>.</p>
+
+    <h2>Keine Daten an andere Anbieter</h2>
+    <ul>
+      <li>Das Spiel lädt nichts von fremden Servern. Schriftarten und Spielcode liegen auf dieser Seite selbst, Grafiken, Musik und Geräusche entstehen direkt im Browser.</li>
+      <li>Es gibt keine Cookies, keine Analyse- oder Tracking-Werkzeuge und keine eingebundenen Inhalte anderer Anbieter.</li>
+    </ul>
+
+    <h2>Was im Browser gespeichert wird</h2>
+    <p>Damit sie beim nächsten Besuch noch da sind, legt das Spiel im lokalen Speicher des Browsers nur zwei Dinge ab: die Level-Bestwerte (<code>bruch-levels</code>) und die Ton-Einstellung (<code>bruch-ton</code>). Diese Daten bleiben auf dem Gerät und werden nicht übertragen. Du kannst sie jederzeit löschen, indem du in den Einstellungen deines Browsers die Websitedaten dieser Seite löschst.</p>
+
+    <h2>Verantwortlich und Kontakt</h2>
+    <p>Verantwortlich ist der Inhaber des GitHub-Kontos <a href="https://github.com/JWnq">JWnq</a>, erreichbar über GitHub.</p>
+
+    <h2>Deine Rechte</h2>
+    <p>Nach der Datenschutz-Grundverordnung hast du das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung sowie das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Diese Seite selbst speichert keine personenbezogenen Daten. Anfragen betreffen deshalb in der Regel die Daten, die GitHub als Anbieter verarbeitet.</p>
+
+    <p class="meta">Stand: November 2026</p>
+  </main>
+  <p class="back"><a href="./">Zurück zum Spiel</a></p>
+</div>
+</body>
+</html>

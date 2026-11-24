@@ -4,10 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Jump'n'Run zum Üben von Bruchrechnung (Malnehmen und Teilen) für Kinder.">
+<style>
+@font-face{font-family:"Lilita One";src:url("fonts/LilitaOne-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Nunito";src:url("fonts/Nunito-wght.ttf") format("truetype");font-weight:200 1000;font-display:swap}
+.privacy{font-size:.85rem;color:var(--muted)}
+.privacy a{color:var(--rune-ink);font-weight:800}
+</style>
 <title>Bruch-Abenteuer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;800;900&display=swap">
 <style>
 /* Layout: Vollbild-Spiel. Die Leinwand füllt den ganzen Bildschirm, Titel und Statuschips schweben oben darüber, Touch-Knöpfe unten. Rätsel als helle Steintafel. Bewusst eine Welt (Abendwald), daher ein festes dunkles Farbschema. */
 :root{
@@ -174,6 +177,7 @@ kbd{font-family:var(--body);font-weight:800;background:#fff;border:1px solid var
       <li><i class="ico boss">♛</i><div><b>Endgegner</b><span class="t">Am Ende jedes Levels ein anderer, jeder mit eigenen Angriffen. Triff den richtigen Antwort-Block, dann trifft ihn ein Mondstrahl. Ein falscher Block wirft dich zum vorletzten Kontrollpunkt zurück.</span></div></li>
     </ul>
     <p class="keys"><kbd>←</kbd> <kbd>→</kbd> laufen, <kbd>Leertaste</kbd> oder <kbd>↑</kbd> springen, <kbd>X</kbd> heulen (mit der Heulattacke). Auf dem Tablet: Knöpfe unten im Bild.</p>
+    <p class="privacy">Privates Lernspiel ohne Werbung, Cookies und Tracking. <a href="datenschutz.html">Datenschutzhinweis</a></p>
     <div class="merk">
       <h3>Merkkasten</h3>
       <div class="ex"><span class="lab">Malnehmen</span><span class="exm" id="m1"></span></div>
@@ -724,7 +728,7 @@ const BOSSES={
   troll:{n:'Grollo der Steintroll',w:110,h:104,tip:'Haut er auf den Boden, rollt eine Schockwelle los. Spring drüber! Er wirft auch Felsen.',hit:'Autsch, Grollo hat dich umgestoßen!'},
   hexe:{n:'Brennessa die Dornenhexe',w:90,h:70,fly:1,hy:140,tip:'Wo der Boden grün leuchtet, wachsen gleich Dornen. Weg da!',hit:'Autsch, Brennessas Besen!'},
   hornisse:{n:'Summsel der Hornissenkönig',w:80,h:50,fly:1,hy:150,tip:'Er ruft kleine Hornissen. Leuchtet der Boden rot, saust er unten durch. Spring!',hit:'Autsch, Summsel hat dich gestochen!'},
-  eule:{n:'Uhura die Nachteule',w:96,h:76,fly:1,hy:110,tip:'Ihr Kreischen pustet dich weg, ihre Federn fliegen im Fächer.',hit:'Autsch, Uhura hat dich gepackt!'},
+  eule:{n:'Uhuline die Nachteule',w:96,h:76,fly:1,hy:110,tip:'Ihr Kreischen pustet dich weg, ihre Federn fliegen im Fächer.',hit:'Autsch, Uhuline hat dich gepackt!'},
   baum:{n:'Knorrbart der Baumriese',w:130,h:170,fixed:1,tip:'Wurzeln brechen aus dem Boden, Eicheln fallen, und er schleudert Äste. Spring rechtzeitig!',hit:'Autsch, Knorrbarts Rinde!'}
 };
 const BORDER=['pilz','kraehe','keiler','spinne','geist','troll','hexe','hornisse','eule','baum'];
