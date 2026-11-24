@@ -17,6 +17,6 @@ Online: https://jwnq.github.io/bruchlernwolf/
 
 Lokal: `index.html` herunterladen und im Browser öffnen. Es wird nichts installiert. Ohne Internet fehlt nur die Schriftart, das Spiel läuft trotzdem.
 
-Steuerung: Pfeiltasten zum Laufen, Leertaste oder Pfeil nach oben zum Springen, X zum Heulen. Auf dem Tablet gibt es Knöpfe im Bild.
+Steuerung: Pfeiltasten zum Laufen, Leertaste oder Pfeil nach oben zum Springen, X zum Heulen. Auf dem Tablet gibt es Knöpfe im Bild für Laufen, Springen und Heulen.
 
 Das Spiel speichert nur Level-Bestwerte und die Ton-Einstellung im Browser des Geräts und sendet keine Spieldaten. Nur die Schriftart wird von Google Fonts geladen.

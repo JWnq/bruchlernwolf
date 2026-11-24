@@ -48,6 +48,7 @@ button.chip:hover{background:rgba(30,60,45,.8)}
 .pad .jump{width:auto;padding:0 24px;background:rgba(255,200,61,.85);color:var(--ink);border-color:var(--amber-dark);font:400 1.2rem var(--display)}
 .pad button.on{transform:translateY(2px);filter:brightness(1.2)}
 .pad .howlb{width:auto;padding:0 16px;background:rgba(201,167,255,.85);color:var(--ink);border-color:#9a7ad0;font:400 1.1rem var(--display)}
+.pad .howlb.off{background:rgba(9,22,17,.45);color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.35)}
 .left{display:flex;flex-direction:column;gap:8px;min-width:0}
 .powers{display:flex;flex-wrap:wrap;gap:6px;max-width:min(560px,52vw)}
 .pw{display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 6px;border-radius:999px;background:rgba(9,22,17,.66);border:1px solid var(--c);color:var(--c);font:800 .8rem/1.2 var(--body);white-space:nowrap}
@@ -151,7 +152,7 @@ kbd{font-family:var(--body);font-weight:800;background:#fff;border:1px solid var
   <p class="rotate">Dreh dein Gerät quer, dann wird der Wald größer.</p>
   <div class="pad" id="pad">
     <div class="grp"><button type="button" data-k="l" aria-label="Nach links">◀</button><button type="button" data-k="r" aria-label="Nach rechts">▶</button></div>
-    <div class="grp"><button type="button" class="howlb" data-k="h" id="howlBtn" hidden>Heulen</button><button type="button" class="jump" data-k="j">Springen</button></div>
+    <div class="grp"><button type="button" class="howlb off" data-k="h" id="howlBtn" aria-label="Heulen (Heulattacke)">Heulen</button><button type="button" class="jump" data-k="j">Springen</button></div>
   </div>
 </div>
 
@@ -297,7 +298,7 @@ const TXT={
 };
 let Q=null;
 function msg(t,c){const m=$('qMsg');m.textContent=t;m.className='msg '+(c||'');}
-function resetKeys(){K.l=K.r=K.j=K.h=0;document.querySelectorAll('#pad button').forEach(b=>b.classList.remove('on'));}
+function resetKeys(){K.l=K.r=K.j=K.h=K.jTap=K.hTap=0;document.querySelectorAll('#pad button').forEach(b=>b.classList.remove('on'));}
 function openQ(task,o){
   S.paused=true;resetKeys();Q=Object.assign({task,tries:0,done:false},o);
   const T=TXT[task.kind];
@@ -582,7 +583,7 @@ const POW={
 const PICON={double:'<path d="M7 13l5-5 5 5M7 19l5-5 5 5"/>',speed:'<path d="M3 8h10a3 3 0 1 0-3-3M3 16h13a3 3 0 1 1-3 3M3 12h7"/>',high:'<path d="M12 20V5M6 11l6-6 6 6"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',magnet:'<path d="M5 4h4v8a3 3 0 0 0 6 0V4h4v8a7 7 0 0 1-14 0z"/>',howl:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>'};
 function powUI(fresh){
   $('powers').innerHTML=[...S.powers].map(k=>`<span class="pw${k===fresh?' new':''}${k==='howl'&&P&&P.cd>0?' cool':''}" style="--c:${POW[k].c}" title="${POW[k].n}: ${POW[k].d}"><svg viewBox="0 0 24 24">${PICON[k]}</svg><span class="lbl">${POW[k].n}</span></span>`).join('');
-  $('howlBtn').hidden=!S.powers.has('howl');
+  $('howlBtn').classList.toggle('off',!S.powers.has('howl')||!!(P&&P.cd>0));
 }
 function grantPower(msg){
   const miss=Object.keys(POW).filter(k=>!S.powers.has(k));
@@ -603,7 +604,7 @@ function hurt(text,kind){
   if(lost){setTimeout(()=>sfx('lost'),250);say(text+' Deine Superkräfte sind weg!',4200);}else say(text);
 }
 function tryHowl(){
-  if(!S.powers.has('howl'))return;
+  if(!S.powers.has('howl')){if(tick-wallSaid>90){say('Heulen geht erst mit der Superkraft Heulattacke. Löse Rätsel, dann bekommst du sie vielleicht!');wallSaid=tick;}return;}
   if(P.cd>0){say('Die Heulattacke lädt noch auf.');return;}
   P.cd=360;P.howling=45;powUI();howl(1.2,1.15,0,.9);
   const cx=P.x+19,cy=P.y+20;W.rings.push({x:cx,y:cy,r:10,life:40});
@@ -639,12 +640,12 @@ function update(){
   const dir=(K.r?1:0)-(K.l?1:0);
   if(dir){P.vx+=dir*(fast?.95:.7);P.face=dir;}else P.vx*=.72;
   P.vx=Math.max(-maxV,Math.min(maxV,P.vx));if(Math.abs(P.vx)<.05)P.vx=0;
-  if(K.j&&!jPrev)P.buf=8;jPrev=K.j;if(P.buf>0)P.buf--;
+  if((K.j&&!jPrev)||K.jTap){P.buf=8;K.jTap=0;}jPrev=K.j;if(P.buf>0)P.buf--;
   P.coy=P.on?6:Math.max(0,P.coy-1);if(P.on)P.air=1;
   const jv=S.powers.has('high')?-13.6:-11.6;
   if(P.buf>0&&P.coy>0){P.vy=jv;P.buf=0;P.coy=0;P.on=false;sfx('jump');}
   else if(P.buf>0&&!P.on&&P.air>0&&S.powers.has('double')){P.vy=jv*.92;P.air=0;P.buf=0;burst(P.x+19,P.y+40,'#7cc4ff',8);sfx('jump2');}
-  if(K.h&&!hPrev)tryHowl();hPrev=K.h;
+  if((K.h&&!hPrev)||K.hTap){K.hTap=0;tryHowl();}hPrev=K.h;
   if(P.cd>0){P.cd--;if(!P.cd)powUI();}
   if(P.howling>0)P.howling--;
   P.vy=Math.min(P.vy+.55,13);
@@ -1359,11 +1360,11 @@ $('fsBtn').onclick=()=>{
 };
 const KM={ArrowLeft:'l',a:'l',A:'l',ArrowRight:'r',d:'r',D:'r',ArrowUp:'j',w:'j',W:'j',' ':'j',x:'h',X:'h',h:'h',H:'h'};
 const anyOverlay=()=>!$('ovQ').hidden||!$('ovStart').hidden||!$('ovWin').hidden;
-addEventListener('keydown',e=>{if(anyOverlay())return;const k=KM[e.key];if(k){K[k]=1;e.preventDefault();}});
+addEventListener('keydown',e=>{if(anyOverlay())return;const k=KM[e.key];if(k){K[k]=1;if(!e.repeat)K[k+'Tap']=1;e.preventDefault();}});
 addEventListener('keyup',e=>{const k=KM[e.key];if(k)K[k]=0;});
 addEventListener('blur',resetKeys);
 document.querySelectorAll('#pad button').forEach(b=>{
-  const k=b.dataset.k,on=e=>{e.preventDefault();K[k]=1;b.classList.add('on');},off=()=>{K[k]=0;b.classList.remove('on');};
+  const k=b.dataset.k,on=e=>{e.preventDefault();K[k]=1;K[k+'Tap']=1;b.classList.add('on');},off=()=>{K[k]=0;b.classList.remove('on');};
   b.addEventListener('pointerdown',on);['pointerup','pointercancel','pointerleave'].forEach(ev=>b.addEventListener(ev,off));
   b.addEventListener('contextmenu',e=>e.preventDefault());
 });
